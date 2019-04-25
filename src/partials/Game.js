@@ -12,6 +12,8 @@ export default class Game {
     this.gameElement =document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
 
+    // START PADDLES PLAYER 1 PLAYER 2
+
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
@@ -21,14 +23,20 @@ export default class Game {
     this.paddleWidth,
     this.paddleHeight,
     this.boardGap,
-    ((this.height - this.paddleHeight) / 2));
+    ((this.height - this.paddleHeight) / 2),
+      KEYS.a, 
+      KEYS.z
+    );
 
     this.player2 = new Paddle(
       this.height,
       this.paddleWidth,
       this.paddleHeight,
       (this.width - this.boardGap - this.paddleWidth),
-      ((this.height - this.paddleHeight) / 2));
+      ((this.height - this.paddleHeight) / 2),
+        KEYS.up,
+        KEYS.down
+      );
   
 
   } // END OF CONSTRUCTOR
