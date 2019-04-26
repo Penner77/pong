@@ -6,6 +6,9 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
+
+        this.ping = new Audio('public/sounds/pong-01.wav');
+
         this.reset();
     }// end of constructor
 
@@ -48,6 +51,8 @@ export default class Ball {
                 (this.y >= topY && this.y <= bottomY)
             ) {
                 this.vx = -this.vx;
+                //SOUND
+                this.ping.play();
             }
         }
         else {
@@ -60,9 +65,18 @@ export default class Ball {
                 (this.y >= topY && this.y <= bottomY)
             ) {
                 this.vx = -this.vx;
+                //SOUND
+                 this.ping.play();
             }
         }
     }
+        // END OF PADDLE COLLISION
+
+    //add goal/score method
+        goal(player){
+           player.score++;
+           this.reset(); 
+        }
 
     render(svg, player1, player2) {      //this adding of p1 and p2 will allow collision detection
 
@@ -78,7 +92,16 @@ export default class Ball {
         circle.setAttributeNS(null, 'cy', this.y); // y position
         circle.setAttributeNS(null, 'fill', 'red'); // or you could add this to the constructor list above and set this.color later to whatever I want
         svg.appendChild(circle);
-    }
+
+        const rightGoal = this.x + this.radius >= this.boardWidth;
+        const leftGoal = this.x - this.radius <= 0;
+        if(rightGoal){
+            this.goal(player1);
+            this.direction = 1;
+        } else if(leftGoal){
+            this.goal(player2);
+            this.direction = -1;
+    }}
 
 }//end of Ball Class
 
