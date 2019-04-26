@@ -1,6 +1,7 @@
 # Pong Game
 
 A basic pong game using SVGs.
+***** add stretch goals and special modifications
 
 ## Setup
 
