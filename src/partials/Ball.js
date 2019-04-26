@@ -91,6 +91,8 @@ export default class Ball {
         circle.setAttributeNS(null, 'cx', this.x); // x position
         circle.setAttributeNS(null, 'cy', this.y); // y position
         circle.setAttributeNS(null, 'fill', 'red'); // or you could add this to the constructor list above and set this.color later to whatever I want
+        circle.setAttributeNS(null, 'stroke', 'black');
+        circle.setAttributeNS(null, 'stroke-width', 5);
         svg.appendChild(circle);
 
         const rightGoal = this.x + this.radius >= this.boardWidth;
