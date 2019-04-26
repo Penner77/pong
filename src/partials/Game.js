@@ -41,13 +41,30 @@ export default class Game {
       );
   
       //START BALL
-
       this.ball = new Ball(8, this.width, this.height);
+
+      //START PAUSE
+      document.addEventListener('keydown', event => {
+        console.log(event);
+        switch(event.key){
+          case KEYS.spaceBar:
+            this.pause = !this.pause;
+          break;
+        }
+      }
+      );
+
 
   } // END OF GAME CONSTRUCTOR
 
   render() {
     // More code goes here....
+
+    if(this.pause){
+      return; 
+      //with return an no additional info, it will work kind of like 'break' 
+    }
+
     this.gameElement.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, 'svg');
     svg.setAttributeNS(null, 'width', this.width);
