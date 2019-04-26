@@ -20,7 +20,7 @@ export default class Paddle {
             break;
         }
       });
-    } 
+    }   // END OF CONSTRUCTOR
     
     up() {
       this.y = Math.max(0, this.y - this.speed);
@@ -29,9 +29,16 @@ export default class Paddle {
     down() {
       this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
     }
-    // TRY SLIDE 34 AND ADD IF THEN STATEMENTS TO GET THE PADDLES WORKING
+   
+      coordinates(x, y, width, height){
+        let leftX = x;
+        let rightX = x + width;
+        let topY = y;
+        let bottomY = y + height;
+        return [leftX, rightX, topY, bottomY];
+      }
 
-    // END OF CONSTRUCTOR
+  
 
     render(svg){
         let rect = document.createElementNS(SVG_NS, 'rect');
@@ -40,7 +47,6 @@ export default class Paddle {
         rect.setAttributeNS(null, 'height', this.height);
         rect.setAttributeNS(null, 'x', this.x);
         rect.setAttributeNS(null, 'y', this.y);
-
         svg.appendChild(rect);
     }
   }
