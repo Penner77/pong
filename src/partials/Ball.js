@@ -16,7 +16,7 @@ export default class Ball {
 
     reset() {
         this.x = this.boardWidth / 2;
-        this.y = this.boardHeight / 1.5;
+        this.y = this.boardHeight / 2;
         this.vy = 0;
         while (this.vy === 0) {
             this.vy = Math.floor(Math.random() * 10 - 5);
@@ -80,7 +80,47 @@ export default class Ball {
             }
         }
     }
+                   
         // END OF PADDLE COLLISION
+         // BEGINNING OF NET COLLISION ************************************************
+
+         paddleCollision2(netborder) {
+            if (this.vx > 0) {
+                // ball is moving to the right and check for player 2
+                let paddle = netborder.coordinates(netborder.x, netborder.y, netborder.width, netborder.height);
+                let [leftX, rightX, topY, bottomY] = paddle;
+                if (
+                    (this.x + this.radius >= leftX) &&
+                    (this.x + this.radius <= rightX) &&
+                    (this.y >= topY && this.y <= bottomY)
+                ) {
+                    this.vx = -this.vx;
+                    //SOUND
+                    this.ping.play();
+                    netborder.height = netborder.height-1; //MAKES THE BORDER SHRINK -1 UPON EACH HIT
+                    this.radius = this.radius; 
+                
+                }
+            }
+            else {
+                let paddle = netborder.coordinates(netborder.x, netborder.y, netborder.width, netborder.height);
+                let [leftX, rightX, topY, bottomY] = paddle;
+                if (
+                    (this.x - this.radius <= rightX) &&
+                    (this.x - this.radius >= leftX) &&
+                    (this.y >= topY && this.y <= bottomY)
+                ) {
+                    this.vx = -this.vx;
+                    //SOUND
+                     this.ping.play();
+                     netborder.height = netborder.height-1; //MAKES THE BORDER SHRINK -1 UPON EACH HIT!
+                     this.radius = this.radius;
+                }
+            }
+        }
+
+        //END OF NET COLLISION ************************************************
+
 
         //START ADD GOAL/SCORE METHOD
         goal(player){
@@ -95,7 +135,8 @@ export default class Ball {
         this.y += this.vy; //update position with vector direction 60 times per second
 
         this.wallCollision();
-        this.paddleCollision(player1, player2, netborder);
+        this.paddleCollision(player1, player2);
+        this.paddleCollision2(netborder);
 
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null, 'r', this.radius);

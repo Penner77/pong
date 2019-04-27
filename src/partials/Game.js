@@ -49,9 +49,9 @@ export default class Game {
       this.netborder = new Paddle(
         this.height,
         this.paddleWidth,
-        this.paddleHeight,
+        this.paddleHeight *2,
         this.width / 2 - 5,
-        ((this.height - this.paddleHeight) / 2),
+        ((this.height - this.paddleHeight) / 2.5),
           this.ogheight
         );
 
