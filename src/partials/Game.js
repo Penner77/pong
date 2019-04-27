@@ -49,7 +49,7 @@ export default class Game {
       this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
       //START BALL
-      this.ball = new Ball(28, this.width, this.height);
+      this.ball = new Ball(18, this.width, this.height);
 
       //START PAUSE
       document.addEventListener('keydown', event => {
@@ -62,17 +62,15 @@ export default class Game {
         }
       }
       );
-
-
-  } // END OF GAME CONSTRUCTOR
+      
+       } // END OF GAME CONSTRUCTOR
 
   render() {
-    // More code goes here....
 
     if(this.pause){
     
       return; 
-      //with return an no additional info, it will work kind of like 'break' 
+      //with no additional info, 'return' will work kind of like 'break' 
     }
 
     this.gameElement.innerHTML = '';

@@ -17,13 +17,12 @@ export default class Ball {
     reset() {
         this.x = this.boardWidth / 2;
         this.y = this.boardHeight / 2;
-
         this.vy = 0;
         while (this.vy === 0) {
             this.vy = Math.floor(Math.random() * 10 - 5);
         }
 
-        this.vx = this.direction * (6 - Math.abs(this.vy));
+        this.vx = this.direction * (6 - Math.abs(this.vy)); 
     } //end of reset
 
     wallCollision() {
@@ -53,6 +52,9 @@ export default class Ball {
                 this.vx = -this.vx;
                 //SOUND
                 this.ping.play();
+                player2.height = player2.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
+                this.radius = this.radius+.5; //MAKES THE BALL GROW SLIGHTLY ON EACH HIT
+            
             }
         }
         else {
@@ -67,6 +69,8 @@ export default class Ball {
                 this.vx = -this.vx;
                 //SOUND
                  this.ping.play();
+                 player1.height = player1.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
+                 this.radius = this.radius+.5; //MAKES THE BALL GROW SLIGHTLY ON EACH HIT
             }
         }
     }
