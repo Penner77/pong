@@ -1,4 +1,5 @@
 import { SVG_NS } from '../settings';
+import Paddle from './Paddle';
 
 export default class Ball {
     constructor(radius, boardWidth, boardHeight) {
@@ -23,6 +24,9 @@ export default class Ball {
         }
 
         this.vx = this.direction * (6 - Math.abs(this.vy)); 
+
+        let newPaddle = () => document.getElementById(Paddle.paddlereset);
+        newPaddle();
     } //end of reset
 
     wallCollision() {
@@ -76,7 +80,7 @@ export default class Ball {
     }
         // END OF PADDLE COLLISION
 
-    //add goal/score method
+        //START ADD GOAL/SCORE METHOD
         goal(player){
            player.score++;
            this.reset(); 

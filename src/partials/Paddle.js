@@ -9,6 +9,7 @@ export default class Paddle {
       this.y = y;
       this.speed = 20;
       this.score = 0;
+      this.reset(boardHeight, width, height, x, y);
 
       document.addEventListener('keydown', event => {
         switch (event.key) {
@@ -22,6 +23,15 @@ export default class Paddle {
       });
 
     }   // END OF CONSTRUCTOR
+
+    reset(boardHeight, width, height, x, y){
+      this.boardHeight = boardHeight;
+      this.width = width;
+      this.height = height;
+      this.x = x;
+      this.y = y;
+      this.speed = 20;
+    }
     
     up() {
       this.y = Math.max(0, this.y - this.speed);
