@@ -1,5 +1,4 @@
 import { SVG_NS } from '../settings';
-import Paddle from './Paddle';
 
 export default class Ball {
     constructor(radius, boardWidth, boardHeight) {
@@ -25,10 +24,13 @@ export default class Ball {
 
         this.vx = this.direction * (6 - Math.abs(this.vy)); 
 
-        let newPaddle = () => document.getElementById(Paddle.paddlereset);
-        newPaddle();
     } //end of reset
 
+    playerReset(player1, player2){
+        player1.height = player1.ogheight;
+        player2.height = player2.ogheight;
+    }
+    
     wallCollision() {
         const hitLeft = this.x - this.radius <= 0;
         const hitRight = this.x + this.radius >= this.boardWidth;
@@ -86,6 +88,7 @@ export default class Ball {
            this.reset(); 
         }
 
+
     render(svg, player1, player2) {      //this adding of p1 and p2 will allow collision detection
 
         this.x += this.vx;
@@ -107,9 +110,11 @@ export default class Ball {
         const leftGoal = this.x - this.radius <= 0;
         if(rightGoal){
             this.goal(player1);
+            this.playerReset(player1, player2);
             this.direction = 1;
         } else if(leftGoal){
             this.goal(player2);
+            this.playerReset(player1, player2);
             this.direction = -1;
     }}
 

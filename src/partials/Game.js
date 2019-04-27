@@ -30,7 +30,9 @@ export default class Game {
       this.boardGap,
       ((this.height - this.paddleHeight) / 2),
       KEYS.a, 
-      KEYS.z
+      KEYS.z,
+      this.ogheight
+
     );
 
     this.player2 = new Paddle(
@@ -40,7 +42,8 @@ export default class Game {
       (this.width - this.boardGap - this.paddleWidth),
       ((this.height - this.paddleHeight) / 2),
         KEYS.up,
-        KEYS.down
+        KEYS.down,
+        this.ogheight
       );
 
       //START SCOREBOARD
@@ -82,7 +85,7 @@ export default class Game {
     this.board.render(svg);
     this.player1.render(svg);
     this.player2.render(svg);
-    this.ball.render(svg, this.player1, this.player2);//this will allow collision detection
+    this.ball.render(svg, this.player1, this.player2);//this will allow p1 and p2 accessible in Ball, and allow collision detection
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }
