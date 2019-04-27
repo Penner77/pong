@@ -16,7 +16,7 @@ export default class Ball {
 
     reset() {
         this.x = this.boardWidth / 2;
-        this.y = this.boardHeight / 2;
+        this.y = this.boardHeight / 1.5;
         this.vy = 0;
         while (this.vy === 0) {
             this.vy = Math.floor(Math.random() * 10 - 5);
@@ -89,13 +89,13 @@ export default class Ball {
         }
 
 
-    render(svg, player1, player2) {      //this adding of p1 and p2 will allow collision detection
+    render(svg, player1, player2, netborder) {      //this adding of p1 and p2 will allow collision detection
 
         this.x += this.vx;
         this.y += this.vy; //update position with vector direction 60 times per second
 
         this.wallCollision();
-        this.paddleCollision(player1, player2);
+        this.paddleCollision(player1, player2, netborder);
 
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null, 'r', this.radius);

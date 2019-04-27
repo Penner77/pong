@@ -46,6 +46,15 @@ export default class Game {
         this.ogheight
       );
 
+      this.netborder = new Paddle(
+        this.height,
+        this.paddleWidth,
+        this.paddleHeight,
+        this.width / 2 - 5,
+        ((this.height - this.paddleHeight) / 2),
+          this.ogheight
+        );
+
       //START SCOREBOARD
 
       this.score1 = new Score(this.width / 2 - 50, 30, 30);
@@ -85,7 +94,8 @@ export default class Game {
     this.board.render(svg);
     this.player1.render(svg);
     this.player2.render(svg);
-    this.ball.render(svg, this.player1, this.player2);//this will allow p1 and p2 accessible in Ball, and allow collision detection
+    this.netborder.render(svg);
+    this.ball.render(svg, this.player1, this.player2, this.netborder);//this will allow p1 and p2 accessible in Ball, and allow collision detection
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }
