@@ -19,7 +19,7 @@ export default class Game {
 
     // START PADDLES PLAYER 1 PLAYER 2
 
-    this.paddleWidth = 8;
+    this.paddleWidth = 10;
     this.paddleHeight = 56;
     this.boardGap = 10;
 
@@ -52,7 +52,7 @@ export default class Game {
       this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
       //START BALL
-      this.ball = new Ball(18, this.width, this.height);
+      this.ball = new Ball(12, this.width, this.height);
 
       //START PAUSE
       document.addEventListener('keydown', event => {

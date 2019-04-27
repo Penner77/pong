@@ -30,7 +30,7 @@ export default class Ball {
         player1.height = player1.ogheight;
         player2.height = player2.ogheight;
     }
-    
+
     wallCollision() {
         const hitLeft = this.x - this.radius <= 0;
         const hitRight = this.x + this.radius >= this.boardWidth;
@@ -59,7 +59,7 @@ export default class Ball {
                 //SOUND
                 this.ping.play();
                 player2.height = player2.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
-                this.radius = this.radius+.5; //MAKES THE BALL GROW SLIGHTLY ON EACH HIT
+                this.radius = this.radius; 
             
             }
         }
@@ -76,7 +76,7 @@ export default class Ball {
                 //SOUND
                  this.ping.play();
                  player1.height = player1.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
-                 this.radius = this.radius+.5; //MAKES THE BALL GROW SLIGHTLY ON EACH HIT
+                 this.radius = this.radius;
             }
         }
     }
