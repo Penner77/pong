@@ -75,16 +75,12 @@ export default class Game {
       }
       );
       
-       } // END OF 
-       
-       //CONSTRUCTOR
+       } // END OF CONSTRUCTOR
+
 
   render() {
-
     if(this.pause){
-    
       return; 
-      //with no additional info, 'return' will work kind of like 'break' 
     }
 
     this.gameElement.innerHTML = '';
@@ -97,28 +93,33 @@ export default class Game {
     this.player1.render(svg);
     this.player2.render(svg);
     this.netborder.render(svg);
-    this.ball.render(svg, this.player1, this.player2, this.netborder);//this will allow p1 and p2 accessible in Ball, and allow collision detection
+    this.ball.render(svg, this.player1, this.player2, this.netborder);//allow collision detection
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
+
     let winner1 = document.createElementNS(SVG_NS, 'text');
     winner1.setAttributeNS(null, 'x', '50');
-    winner1.setAttributeNS(null, 'y', '200');
+    winner1.setAttributeNS(null, 'y', '220');
     winner1.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
     winner1.setAttributeNS(null, 'font-size', '30');
-    winner1.setAttributeNS(null, 'fill', 'yellow');
-    winner1.textContent = 'Player 1 is The Winner';
+    winner1.setAttributeNS(null, 'fill', 'red');
+    winner1.setAttributeNS(null, 'stroke', 'black');
+    winner1.setAttributeNS(null, 'stroke-width', 1);
+    winner1.textContent = 'Player 1 Wins!';
 
     let winner2 = document.createElementNS(SVG_NS, 'text');
-    winner2.setAttributeNS(null, 'x', '50');
-    winner2.setAttributeNS(null, 'y', '200');
+    winner2.setAttributeNS(null, 'x', '185');
+    winner2.setAttributeNS(null, 'y', '220');
     winner2.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
     winner2.setAttributeNS(null, 'font-size', '30');
-    winner2.setAttributeNS(null, 'fill', 'yellow');
-    winner2.textContent = 'Player 2 is The Winner';
-    if(this.player1.score === 10){
+    winner2.setAttributeNS(null, 'fill', 'red');
+    winner2.setAttributeNS(null, 'stroke', 'black');
+    winner2.setAttributeNS(null, 'stroke-width', 1);
+    winner2.textContent = 'Player 2 Wins!';
+    if(this.player1.score === 5){
       svg.appendChild(winner1);
       }
-    if(this.player2.score === 10){
+    if(this.player2.score === 5){
       svg.appendChild(winner2);
     }
   }

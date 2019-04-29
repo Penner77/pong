@@ -2,15 +2,27 @@
 <html>
 	<head>
 		<meta charset='UTF-8'>
+		<link rel="stylesheet" href="game.css">
 		<title>Pong</title>
 	</head>
 	<body>
 		<div class='game-wrapper'>
-			<h1>Pong</h1>
-			<div id='game'></div>
-
+			<h1>BC Lions Pong</h1>
+			<div id='game'>
+			</div>	
+			<div class='controls'>
+			<ul>
+				<li>P1 'a', 'z'</li>
+				<li>Pause 'space'</li>
+				<li>P2 'up, 'down'</li>
+			</ul>
+			</div>
+			<div class='goagain'>
+				<button id='clickMe' onclick='gameLoop()'>Play Again</button>
+			</div>
 		</div>
 
 		<script type='text/javascript' src='build/bundle.js'></script>
+		<script src='/src/index.js'></script>
 	</body>
 </html>

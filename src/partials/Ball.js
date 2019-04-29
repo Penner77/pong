@@ -60,7 +60,7 @@ export default class Ball {
                 this.vx = -this.vx*1.25; // BALL WILL SPEED UP ON EACH SUCCESSFUL HIT, RESETS ON GOAL
                 //SOUND
                 this.ping.play();
-                player2.height = player2.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
+                player2.height = player2.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT
                 this.radius = this.radius; 
             
             }
@@ -77,14 +77,14 @@ export default class Ball {
                 this.vx = -this.vx*1.25; // BALL WILL SPEED UP ON EACH SUCCESSFUL HIT, RESETS ON GOAL
                 //SOUND
                  this.ping.play();
-                 player1.height = player1.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
+                 player1.height = player1.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT
                  this.radius = this.radius;
             }
         }
     }
                    
         // END OF PADDLE COLLISION
-         // BEGINNING OF NET COLLISION ************************************************
+         // BEGINNING OF CENTER "NET" COLLISION 
 
          paddleCollision2(netborder) {
             if (this.vx > 0) {
@@ -115,13 +115,13 @@ export default class Ball {
                     this.vx = -this.vx;
                     //SOUND
                      this.ping.play();
-                     netborder.height = netborder.height-1; //MAKES THE NETBORDER SHRINK -1 UPON EACH HIT!
+                     netborder.height = netborder.height-1; //MAKES THE NETBORDER SHRINK -1 UPON EACH HIT
                      this.radius = this.radius;
                 }
             }
         }
 
-        //END OF NET COLLISION ************************************************
+        //END OF NET COLLISION 
 
 
         //START ADD GOAL/SCORE METHOD
@@ -132,10 +132,10 @@ export default class Ball {
            } 
 
 
-    render(svg, player1, player2, netborder) {      //this adding of p1 and p2 will allow collision detection
+    render(svg, player1, player2, netborder) {      //allow collision detection
 
         this.x += this.vx;
-        this.y += this.vy; //update position with vector direction 60 times per second
+        this.y += this.vy; 
 
         this.wallCollision();
         this.paddleCollision(player1, player2);
@@ -145,7 +145,7 @@ export default class Ball {
         circle.setAttributeNS(null, 'r', this.radius);
         circle.setAttributeNS(null, 'cx', this.x); // x position
         circle.setAttributeNS(null, 'cy', this.y); // y position
-        circle.setAttributeNS(null, 'fill', 'red'); // or you could add this to the constructor list above and set this.color later to whatever I want
+        circle.setAttributeNS(null, 'fill', '#8B4513'); 
         circle.setAttributeNS(null, 'stroke', 'black');
         circle.setAttributeNS(null, 'stroke-width', 5);
         svg.appendChild(circle);

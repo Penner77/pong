@@ -8,12 +8,11 @@ export default class Board {
     render(svg) {
       //...
       let rect = document.createElementNS(SVG_NS, 'rect');
-      rect.setAttributeNS(null, 'fill', '#8BA870');
+      rect.setAttributeNS(null, 'fill', '#3d7d00');
       rect.setAttributeNS(null, 'width', this.width);
       rect.setAttributeNS(null, 'height', this.height);
 
       let line = document.createElementNS(SVG_NS, 'line');
-
       line.setAttributeNS(null, 'x1', this.width / 2);
       line.setAttributeNS(null, 'y1', 0);
       line.setAttributeNS(null, 'x2', this.width / 2);
