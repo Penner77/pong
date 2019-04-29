@@ -75,7 +75,9 @@ export default class Game {
       }
       );
       
-       } // END OF GAME CONSTRUCTOR
+       } // END OF 
+       
+       CONSTRUCTOR
 
   render() {
 
@@ -98,5 +100,26 @@ export default class Game {
     this.ball.render(svg, this.player1, this.player2, this.netborder);//this will allow p1 and p2 accessible in Ball, and allow collision detection
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
+    let text1 = document.createElementNS(SVG_NS, 'text');
+    text1.setAttributeNS(null, 'x', '50');
+    text1.setAttributeNS(null, 'y', '200');
+    text1.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
+    text1.setAttributeNS(null, 'font-size', '30');
+    text1.setAttributeNS(null, 'fill', 'yellow');
+    text1.textContent = 'Player 1 is The Winner';
+
+    let text2 = document.createElementNS(SVG_NS, 'text');
+    text2.setAttributeNS(null, 'x', '50');
+    text2.setAttributeNS(null, 'y', '200');
+    text2.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
+    text2.setAttributeNS(null, 'font-size', '30');
+    text2.setAttributeNS(null, 'fill', 'yellow');
+    text2.textContent = 'Player 2 is The Winner';
+    if(this.player1.score === 3){
+      svg.appendChild(text1);
+      }
+    if(this.player2.score === 3){
+      svg.appendChild(text2);
+    }
   }
 }

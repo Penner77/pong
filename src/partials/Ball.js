@@ -13,7 +13,6 @@ export default class Ball {
     }// end of constructor
 
 
-
     reset() {
         this.x = this.boardWidth / 2;
         this.y = this.boardHeight / 2;
@@ -25,6 +24,9 @@ export default class Ball {
         this.vx = this.direction * (6 - Math.abs(this.vy)); 
 
     } //end of reset
+
+
+        
 
     playerReset(player1, player2){
         player1.height = player1.ogheight;
@@ -55,7 +57,7 @@ export default class Ball {
                 (this.x + this.radius <= rightX) &&
                 (this.y >= topY && this.y <= bottomY)
             ) {
-                this.vx = -this.vx;
+                this.vx = -this.vx*1.25; // BALL WILL SPEED UP ON EACH SUCCESSFUL HIT, RESETS ON GOAL
                 //SOUND
                 this.ping.play();
                 player2.height = player2.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
@@ -72,7 +74,7 @@ export default class Ball {
                 (this.x - this.radius >= leftX) &&
                 (this.y >= topY && this.y <= bottomY)
             ) {
-                this.vx = -this.vx;
+                this.vx = -this.vx*1.25; // BALL WILL SPEED UP ON EACH SUCCESSFUL HIT, RESETS ON GOAL
                 //SOUND
                  this.ping.play();
                  player1.height = player1.height-5; //MAKES THE PADDLES SHRINK -5 UPON EACH HIT!
@@ -97,7 +99,7 @@ export default class Ball {
                     this.vx = -this.vx;
                     //SOUND
                     this.ping.play();
-                    netborder.height = netborder.height-1; //MAKES THE BORDER SHRINK -1 UPON EACH HIT
+                    netborder.height = netborder.height-1; //MAKES THE NETBORDER SHRINK -1 UPON EACH HIT
                     this.radius = this.radius; 
                 
                 }
@@ -113,7 +115,7 @@ export default class Ball {
                     this.vx = -this.vx;
                     //SOUND
                      this.ping.play();
-                     netborder.height = netborder.height-1; //MAKES THE BORDER SHRINK -1 UPON EACH HIT!
+                     netborder.height = netborder.height-1; //MAKES THE NETBORDER SHRINK -1 UPON EACH HIT!
                      this.radius = this.radius;
                 }
             }
@@ -123,10 +125,11 @@ export default class Ball {
 
 
         //START ADD GOAL/SCORE METHOD
+
         goal(player){
            player.score++;
            this.reset(); 
-        }
+           } 
 
 
     render(svg, player1, player2, netborder) {      //this adding of p1 and p2 will allow collision detection
