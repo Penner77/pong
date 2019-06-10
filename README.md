@@ -1,13 +1,14 @@
 # Pong Game
 
-A basic pong game using SVGs:
+A playable and unique pong game using SVGs:
 
 1. Board
-2. Paddles x3 (see "Stretch Goals")
+2. Paddles x3
 3. Ball
    Board designed at 512 x 256 with scoring based on the ball element passing the threshhold "0" for player 2 and "board width" for player 1.
+   (see "Stretch Goals" for unique properties of Ball and Paddles)
 
-<img src="images/pong-shot.png" width="750">
+<img src="images/pong-preview.gif" width="750">
 
 ##Stretch Goals
 In-Game:
@@ -19,11 +20,6 @@ In-Game:
 5. On pause, the game plays the Super Mario Bros. pause jingle.
 6. At a score of 10, the "Player Wins" text appears, specifically on the winner's side of the court.
 7. I modelled the colors after a brown football, green field and the official orange of the BC Lions.
-
-##Missed Goals
-
-1. Could NOT figure out how to do a start screen, and thus also no "new game" option upon a win :(
-2. My attempts to configure multi-ball looked/felt correct but would not, in fact, trigger multi-ball.
 
 ## Setup
 
@@ -52,3 +48,5 @@ In-Game:
 - ▲ : up
 - ▼: down
   Paddle speed set to 35, in this project we did not learn "smooth scrolling" so they are a bit jumpy but need to be able to move quickly.
+
+<img src="images/pong-shot.png" width="750">
