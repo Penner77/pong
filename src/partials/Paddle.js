@@ -7,43 +7,57 @@ export default class Paddle {
       this.height = height;
       this.x = x;
       this.y = y;
-      this.speed = 35;
+      this.speed = 8;
       this.score = 0;
       this.ogheight = height;
+      this.pressed_buttons = [false,false];
 
       document.addEventListener('keydown', event => {
         switch (event.key) {
           case up:
-          this.up();
+            this.pressed_buttons[0] = true;
+          // this.up();
             break;
           case down:
-          this.down();
+            this.pressed_buttons[1] = true;
+          // this.down();
+            break;
+        }
+      });
+      document.addEventListener('keyup', event => {
+        switch (event.key) {
+          case up:
+            this.pressed_buttons[0] = false;
+          // this.up();
+            break;
+          case down:
+            this.pressed_buttons[1] = false;
+          // this.down();
             break;
         }
       });
 
     }   // END OF CONSTRUCTOR
 
-    
-    up() {
-      this.y = Math.max(0, this.y - this.speed);
-    }
-
-    down() {
-      this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
-    }
-   
-      coordinates(x, y, width, height){
+    move_paddle(){
+      if(this.pressed_buttons[0] === true){
+        this.y = Math.max(0, this.y - this.speed);
+      }else if(this.pressed_buttons[1] === true){
+        this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
+      }
+    }   
+    coordinates(x, y, width, height){
         let leftX = x;
         let rightX = x + width;
         let topY = y;
         let bottomY = y + height;
         return [leftX, rightX, topY, bottomY];
-      }
+    }
 
   
 
     render(svg){
+        this.move_paddle();
         let rect = document.createElementNS(SVG_NS, 'rect');
         rect.setAttributeNS(null, 'fill', '#f1551d');
         rect.setAttributeNS(null, 'width', this.width);
@@ -54,4 +68,4 @@ export default class Paddle {
         rect.setAttributeNS(null, 'stroke-width', 3);
         svg.appendChild(rect);
     }
-  }
+}
